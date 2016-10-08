@@ -4,3 +4,8 @@ body {
   position: relative;
   vertical-align:middle;
 }
+
+.container {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
