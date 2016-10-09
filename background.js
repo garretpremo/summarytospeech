@@ -7,17 +7,13 @@ chrome.contextMenus.create( {
   onclick: sendTextToPopup
 });
 
-// chrome.contextMenus.onClicked.addListener(function(info, tab)) {
-//   sendTextToPopup(info, tab);
-// }
-
 function sendTextToPopup(info, tab) {
   //var mouseEvent = new MouseEvent('event');
   //open popup
   //window.open("popup.html", "SummarizeAndSay", "width=360,height=365,status=no,scrollbars=no,resizable=no");
 
   var popupData = {
-    url: 'popup.html',
+    url: chrome.extension.getURL("popup.html"),
     width: 360,
     height: 365,
     type: 'popup'
