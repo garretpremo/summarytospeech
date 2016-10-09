@@ -7,6 +7,10 @@ chrome.contextMenus.create( {
   onclick: sendTextToPopup
 });
 
+// chrome.contextMenus.onClicked.addListener(function(info, tab)) {
+//   sendTextToPopup(info, tab);
+// }
+
 function sendTextToPopup(info, tab) {
   //var mouseEvent = new MouseEvent('event');
   //open popup
