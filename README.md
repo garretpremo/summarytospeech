@@ -9,5 +9,3 @@ Text to Speech api: [euphony](euphonyinc.com)
 
 
 Contributors: Lucien Brule, Garret Premo, Lucas Volle
-git pls
-git cmon pls
