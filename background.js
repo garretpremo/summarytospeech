@@ -8,8 +8,21 @@ chrome.contextMenus.create( {
 });
 
 function sendTextToPopup(info, tab) {
+  //var mouseEvent = new MouseEvent('event');
   //open popup
-  window.open("popup.html", "SummarizeAndSay", "width=360,height=290,status=no,scrollbars=no,resizable=no");
+  //window.open("popup.html", "SummarizeAndSay", "width=360,height=365,status=no,scrollbars=no,resizable=no");
+
+  var popupData = {
+    url: 'popup.html',
+    width: 360,
+    height: 365,
+    type: 'popup'
+  };
+  // if (event) {
+  //   popupData.left = event.screenX;
+  //   popupData.top = event.screenY;
+  // }
+  chrome.windows.create(popupData);
   //send selectionText to popup when requested
   chrome.runtime.onMessage.addListener(function listener(reqest, sender, sendResponse) {
     //chrome.tabs.getCurrent(function(tab){ console.log(tab.id); })

@@ -4,12 +4,14 @@ window.onload = function() { //SMMRY API abstraction
     console.log("window opened")
         //https://github.com/Dogfalo/materialize/issues/1503
 
+    document.title = "Summary to Speech";
+
     function handleTextSMMRYAsync(res) {
         if (res) {
             if(!errorcheck(res)) {
                 return res;
             }
-            
+
         	console.log(res);
             // console.log(res);
             // console.log("just the text:...")
@@ -106,6 +108,7 @@ window.onload = function() { //SMMRY API abstraction
       //update text area
       $('textarea#textarea1').val(info);
       $('textarea#textarea1').trigger('autoresize');
+      $('label[for="textarea1"]').attr('class', 'active');
       //call smmry
       //var summary = getTextSMMRY(info);
     }

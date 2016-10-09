@@ -20,6 +20,10 @@
 
       voiceFactory.getAudio($scope.data.audio).then(function(arrayBuffer) {
         $scope.data.arrayBuffer= arrayBuffer;
+        $('#player1').fadeIn(400)
+        $("#disabledbutton").fadeOut(400, function() {
+          window.player.play();
+        });
       });
     };
   });

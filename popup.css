@@ -1,7 +1,7 @@
 body {
   min-width: 350px;
   width: 100%;
-  min-height: 210px;
+  min-height: 300px;
   height: 100%;
   overflow:hidden;
   position: relative;
@@ -9,14 +9,18 @@ body {
 }
 
 textarea {
-  overflow: hidden !important;
+  overflow-y: auto !important;
   resize: none !important;
-  height: 100px !important;
+  height: 185px !important;
+  padding: .8rem 0 .8rem 0 !important;
+}
+
+.input-field label {
+  top: .3em !important;
 }
 
 .container {
   margin-top: 2rem;
-  margin-bottom: 2rem;
 }
 
 #button-container {
