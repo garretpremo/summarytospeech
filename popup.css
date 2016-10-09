@@ -12,3 +12,8 @@ body {
   margin-top: 2rem;
   margin-bottom: 1rem;
 }
+#textarea1{
+	height: 30px;
+	overflow: scroll;
+	overflow-y: scroll;
+}
