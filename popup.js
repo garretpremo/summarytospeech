@@ -1,21 +1,18 @@
 window.onload = function() { //SMMRY API abstraction
     console.log("window opened")
         //https://github.com/Dogfalo/materialize/issues/1503
-    function resizeTextArea(textarea) {
-        var hiddenDiv = $('#textarea1').first();
-        if (hiddenDiv.length) {
-            hiddenDiv.css('width', textarea.width());
-            textarea.css('height', hiddenDiv.height());
-        }
-    };
 
     function handleTextSMMRYAsync(res) {
         if (res) {
+        	console.log(res);
             // console.log(res);
             // console.log("just the text:...")
             console.log(res.sm_api_content);
+           	// var lbefore =  $('textarea#textarea1').val.length();
             $('textarea#textarea1').val(res.sm_api_content);
+            $('textarea#textarea1').trigger("autoresize");
             $(window).height(10);
+            // var diff = $('textarea#textarea1').val.length() - lbefore;
             window.scrollTo(0, 0);
 
             return res.sm_api_content;
