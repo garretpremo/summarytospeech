@@ -16,15 +16,6 @@
 
 <body ng-app="pow-demo" ng-controller="AudioCtrl">
     <div class="container">
-        <div class="center-align">
-            <div >
-                <!-- <input type="text" > -->
-<!--                 <button ng-click="update()">Update</button>
- -->                <pow data-array-buffer="data.arrayBuffer"></pow>
-                <script src="app.js"></script>
-                <script src="controller.js"></script>
-                <script src="factory.js" charset="utf-8"></script>
-            </div>
             <form class="col s12">
                 <!-- Text box -->
                 <div id="textcontainer" class="input-field col s12">
@@ -32,11 +23,57 @@
                     <label for="textarea1">Enter Text to Summarize</label>
                 </div>
                 <!-- Submit button -->
-                <a ng-click="update()" id="submitbtn1" class="btn waves-effect waves-light">Submit
-              <i class="material-icons right">send</i>
-            </a>
+                <div id="button-container col s12">
+                  <a ng-click="update()" id="submitbtn1" class="btn waves-effect waves-light">
+                    <span id="submit-text">Submit</span>
+
+                    <!-- Text and icon -->
+                      <i id="button-details" class="material-icons right">send</i>
+                  </a>
+
+                  <a ng-click="update()" id="disabledbutton" class="btn disabled">
+                    <!-- Preloader spinner, blue red, yellow -->
+                    <div id="loader" class="preloader-wrapper small active">
+                      <div class="spinner-layer spinner-blue">
+                        <div class="circle-clipper left">
+                          <div class="circle"></div>
+                        </div><div class="gap-patch">
+                          <div class="circle"></div>
+                        </div><div class="circle-clipper right">
+                          <div class="circle"></div>
+                        </div>
+                      </div>
+
+                      <div class="spinner-layer spinner-red">
+                        <div class="circle-clipper left">
+                          <div class="circle"></div>
+                        </div><div class="gap-patch">
+                          <div class="circle"></div>
+                        </div><div class="circle-clipper right">
+                          <div class="circle"></div>
+                        </div>
+                      </div>
+                      <div class="spinner-layer spinner-yellow">
+                        <div class="circle-clipper left">
+                          <div class="circle"></div>
+                        </div><div class="gap-patch">
+                          <div class="circle"></div>
+                        </div><div class="circle-clipper right">
+                          <div class="circle"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+
+                  <!-- Audio player -->
+                  <div >
+                      <pow data-array-buffer="data.arrayBuffer"></pow>
+                      <script src="app.js"></script>
+                      <script src="controller.js"></script>
+                      <script src="factory.js" charset="utf-8"></script>
+                  </div>
+                </div>
             </form>
-        </div>
     </div>
 </body>
 
