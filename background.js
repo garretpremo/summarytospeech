@@ -18,6 +18,11 @@ function sendTextToPopup(info, tab) {
     height: 365,
     type: 'popup'
   };
+  console.log(navigator.platform);
+  if(window.navigator.userAgend.indexOf("Linux")) {
+    popupData.width = 370;
+    popupData.height= 370;
+  }
   // if (event) {
   //   popupData.left = event.screenX;
   //   popupData.top = event.screenY;
