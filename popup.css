@@ -23,6 +23,10 @@ textarea {
     margin-top: 2rem;
 }
 
+.dropdown-content {
+  min-width: 40px !important;
+}
+
 #button-container {
     position: relative;
     ;
@@ -41,6 +45,7 @@ textarea {
     margin-top: 0px;
     width: 3em;
     float: left;
+    top: 76%;
 /*    text-align: left!important;
 */}
 
@@ -51,10 +56,20 @@ textarea {
     position: absolute;
     width: 150px;
     margin: 0 auto;
-    ;
-    left: 0;
+    left: 20%;
     right: 0;
     display: inline-block;
+}
+
+#verbocity {
+  position: absolute;
+  margin: 0 auto;
+  left: 0;
+  right: 50%;
+}
+
+#verbocity-label {
+  left: -0.5rem;
 }
 
 #disabledbutton {
