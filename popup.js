@@ -1,5 +1,5 @@
 var TEXT_TOO_SHORT_ERROR = "Input text too short. Are you SURE you need to tl;dr that?";
-
+var USE_GOOGLE_VOICE = true;
 window.onload = function() { //SMMRY API abstraction
     //https://github.com/Dogfalo/materialize/issues/1503
 
@@ -9,20 +9,28 @@ window.onload = function() { //SMMRY API abstraction
 
     function handleTextSMMRYAsync(res) {
         if (res) {
-            if(!errorcheck(res)) {
+            if (!errorcheck(res)) {
                 return res;
             }
 
-        	console.log(res);
+            console.log(res);
             // console.log(res);
             // console.log("just the text:...")
             console.log(res.sm_api_content);
-           	// var lbefore =  $('textarea#textarea1').val.length();
+            // var lbefore =  $('textarea#textarea1').val.length();
             $('textarea#textarea1').val(res.sm_api_content);
             $('textarea#textarea1').trigger("autoresize");
 
-            angular.element($("#angularupdate")).scope().update(res.sm_api_content);
-            angular.element($("#angularupdate")).scope().$apply();
+            //This defaults to chrome
+            if (USE_GOOGLE_VOICE) {
+                // var utterance = new SpeechSynthesisUtterance(res.sm_api_content);
+                // window.speechSynthesis.speak(utterance);
+            } else {
+                //this calls uphony QQ
+                angular.element($("#angularupdate")).scope().update(res.sm_api_content);
+                angular.element($("#angularupdate")).scope().$apply();
+
+            }
 
             $(window).height(10);
             // var diff = $('textarea#textarea1').val.length() - lbefore;
@@ -40,11 +48,11 @@ window.onload = function() { //SMMRY API abstraction
         //Set up API constants
         SM_API_URL = "http://api.smmry.com/";
         SM_API_KEY = "0C05A0A3E9"; // Mandatory, N represents your registered API key.
-            // SM_URL = X // Mandatory, X represents the webpage to summarize.
+        // SM_URL = X // Mandatory, X represents the webpage to summarize.
         SM_LENGTH = lines; // Optional, N represents the number of sentences returned, default is 7
-            // SM_KEYWORD_COUNT = N // Optional, N represents how many of the top keywords to return
-            // SM_QUOTE_AVOID     // Optional, summary will not include quotations
-            // SM_WITH_BREAK      // Optional, summary will contain string [BREAK] between each
+        // SM_KEYWORD_COUNT = N // Optional, N represents how many of the top keywords to return
+        // SM_QUOTE_AVOID     // Optional, summary will not include quotations
+        // SM_WITH_BREAK      // Optional, summary will contain string [BREAK] between each
 
         //make formatted API request
         var result;
@@ -75,7 +83,7 @@ window.onload = function() { //SMMRY API abstraction
 
         // //call smmry
         //reutrns a promise
-        if(text.length < 40) {
+        if (text.length < 40) {
             console.log(TEXT_TOO_SHORT_ERROR);
             $('textarea#textarea1').val(TEXT_TOO_SHORT_ERROR);
             $('textarea#textarea1').select();
@@ -83,20 +91,24 @@ window.onload = function() { //SMMRY API abstraction
         }
         $("#submitbtn1").fadeOut(800);
         $("#loader").fadeIn(800);
-
-        getTextSMMRY(text, 1);
+        verbocity = $("#selverbocity").val();
+        console.log("Verbocity is: " + verbocity);
+        getTextSMMRY(text, verbocity);
 
         // console.log(text)
         // alert(summary);
         // while(1);
     });
     //alert("opened page");
+    $(document).ready(function() {
+        $('select').material_select();
+    });
 
     function errorcheck(res) {
         if (!res.sm_api_error) {
             return true;
         }
-        if(res.sm_api_error == 3) {
+        if (res.sm_api_error == 3) {
             console.log(TEXT_TOO_SHORT_ERROR);
             return false;
         }
@@ -104,16 +116,16 @@ window.onload = function() { //SMMRY API abstraction
 
     //recieve text from context menu click
     function setSelectionText(info) {
-      console.log(info);
-      //update text area
-      $('textarea#textarea1').val(info);
-      $('textarea#textarea1').trigger('autoresize');
-      $('label[for="textarea1"]').attr('class', 'active');
-      //call smmry
-      //var summary = getTextSMMRY(info);
+        console.log(info);
+        //update text area
+        $('textarea#textarea1').val(info);
+        $('textarea#textarea1').trigger('autoresize');
+        $('label[for="textarea1"]').attr('class', 'active');
+        //call smmry
+        //var summary = getTextSMMRY(info);
     }
 
     //sent message to backgroundjs asking for selectionText
-    chrome.runtime.sendMessage({msg: 'selectionText'}, setSelectionText);
+    chrome.runtime.sendMessage({ msg: 'selectionText' }, setSelectionText);
 
 }
