@@ -13,14 +13,12 @@
         url: "http://api.euphonyinc.com/api/v1/voices",
         headers: {
           apikey: '5a21f55c958f40bcb61e83de0cd1c3c1',
-          'Content-Type': 'application/x-www-form-urlencoded'
+          'Content-Type': 'application/json'
         },
-        data: $httpParamSerializerJQLike({
+        data: {
           text: opts.text,
-          audioType: opts.audioType,
-          locale: opts.locale,
           voice: opts.voice
-        }),
+        },
         responseType: 'arraybuffer'
       }).then(function(response) {
         return response.data;
