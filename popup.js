@@ -2,7 +2,7 @@ var TEXT_TOO_SHORT_ERROR = "Input text too short. Are you SURE you need to tl;dr
 var USE_GOOGLE_VOICE = false;
 window.onload = function() { //SMMRY API abstraction
     //https://github.com/Dogfalo/materialize/issues/1503
-
+    window.speechSynthesis.cancel();
     console.log("window loaded");
 
     document.title = "Summary to Speech";
