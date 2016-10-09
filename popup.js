@@ -29,7 +29,7 @@ window.onload = function() { //SMMRY API abstraction
     function getTextSMMRY(text, lines) {
         //Set up API constants
         SM_API_URL = "http://api.smmry.com/"
-        SM_API_KEY = "0C05A0A3E9" // Mandatory, N represents your registered API key.
+        //SM_API_KEY = "0B2EA743E9" // Mandatory, N represents your registered API key.
             // SM_URL = X // Mandatory, X represents the webpage to summarize.
         SM_LENGTH = lines // Optional, N represents the number of sentences returned, default is 7
             // SM_KEYWORD_COUNT = N // Optional, N represents how many of the top keywords to return
@@ -83,7 +83,7 @@ window.onload = function() { //SMMRY API abstraction
       $('textarea#textarea1').val(info);
       $('textarea#textarea1').trigger('autoresize');
       //call smmry
-      var summary = getTextSMMRY(info);
+      //var summary = getTextSMMRY(info);
     }
 
     //sent message to backgroundjs asking for selectionText

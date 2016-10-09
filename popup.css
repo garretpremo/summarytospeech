@@ -8,6 +8,12 @@ body {
   vertical-align:middle;
 }
 
+textarea {
+  overflow-y: scroll !important;
+  resize: none !important;
+  height: 100px !important;
+}
+
 .container {
   margin-top: 2rem;
   margin-bottom: 1rem;
