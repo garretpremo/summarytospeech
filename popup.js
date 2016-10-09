@@ -1,8 +1,9 @@
-var TEXT_TOO_SHORT_ERROR = "Inputted text too short. You don't need to tl;dr that.";
+var TEXT_TOO_SHORT_ERROR = "Input text too short. Are you SURE you need to tl;dr that?";
 
 window.onload = function() { //SMMRY API abstraction
-    console.log("window opened")
-        //https://github.com/Dogfalo/materialize/issues/1503
+    //https://github.com/Dogfalo/materialize/issues/1503
+
+    console.log("window loaded");
 
     document.title = "Summary to Speech";
 
@@ -69,21 +70,20 @@ window.onload = function() { //SMMRY API abstraction
     //return resulting API text
     $("#submitbtn1").click(function() {
         // $(body).css("background-color", "blue");
-
-        console.log("clicked the button");
         //get the text from the text area
         var text = $('textarea#textarea1').val();
-        console.log(text);
-
-        $("#submitbtn1").fadeOut(800);
-        $("#loader").fadeIn(800);
 
         // //call smmry
         //reutrns a promise
         if(text.length < 40) {
             console.log(TEXT_TOO_SHORT_ERROR);
+            $('textarea#textarea1').val(TEXT_TOO_SHORT_ERROR);
+            $('textarea#textarea1').select();
             return;
         }
+        $("#submitbtn1").fadeOut(800);
+        $("#loader").fadeIn(800);
+
         getTextSMMRY(text, 1);
 
         // console.log(text)
