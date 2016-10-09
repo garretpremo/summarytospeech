@@ -12,6 +12,9 @@
 <!-- CSS & JS -->
 <link rel="stylesheet" href="popup.css">
 <script src="popup.js"></script>
+<script src="app.js"></script>
+<script src="controller.js"></script>
+<script src="factory.js" charset="utf-8"></script>
 
 
 <body ng-app="pow-demo" ng-controller="AudioCtrl">
@@ -20,21 +23,20 @@
             <div >
                 <!-- <input type="text" > -->
 <!--                 <button ng-click="update()">Update</button>
- -->                <pow data-array-buffer="data.arrayBuffer"></pow>
-                <script src="app.js"></script>
-                <script src="controller.js"></script>
-                <script src="factory.js" charset="utf-8"></script>
+ -->            <pow data-array-buffer="data.arrayBuffer"></pow>
+
             </div>
             <form class="col s12">
                 <!-- Text box -->
                 <div id="textcontainer" class="input-field col s12">
-                    <textarea ng-model="data.text" id="textarea1" class="materialize-textarea"></textarea>
+                    <textarea id="textarea1" class="materialize-textarea"></textarea>
                     <label for="textarea1">Enter Text to Summarize</label>
                 </div>
                 <!-- Submit button -->
-                <a ng-click="update()" id="submitbtn1" class="btn waves-effect waves-light">Submit
+                <a id="submitbtn1" class="btn waves-effect waves-light">Submit
               <i class="material-icons right">send</i>
-            </a>
+                </a>
+                <a id="angularupdate" ng-click="update()" id="postsubmit"></a>
             </form>
         </div>
     </div>
