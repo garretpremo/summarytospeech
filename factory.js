@@ -24,6 +24,8 @@
         return response.data;
       })
       .catch(function(err){
+        var utterance = new SpeechSynthesisUtterance(opts.text);
+        window.speechSynthesis.speak(utterance);
         console.log(err);
       });
     }
