@@ -73,6 +73,9 @@ window.onload = function() { //SMMRY API abstraction
         var text = $('textarea#textarea1').val();
         console.log(text);
 
+        $("#submitbtn1").fadeOut(800);
+        $("#loader").fadeIn(800);
+
         // //call smmry
         //reutrns a promise
         if(text.length < 40) {
