@@ -8,9 +8,6 @@
     $scope.data.audioType = "WAVE_FILE";
     $scope.data.arrayBuffer = {};
     $scope.update = function(input) {
-      var shit = input.substring(1, Math.min(400, input.length));
-      console.log("shit = " + shit);
-      console.log("shit's length = " + shit.length);
       $scope.data.audio = {
         text: input.substring(1, Math.min(400, input.length)),
         locale: $scope.data.locale,
