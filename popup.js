@@ -7,6 +7,23 @@ window.onload = function() { //SMMRY API abstraction
 
     document.title = "Summary to Speech";
 
+    var speechUtteranceChunker = function (utt, chunkSize, callback) {
+      var chunkLength = chunkSize;
+      var pattRegex = new RegExp('^[\\s\\S]{' + Math.floor(chunkLength / 2) + ',' + chunkLength + '}[.!?,]{1}|^[\\s\\S]{1,' + chunkLength + '}$|^[\\s\\S]{1,' + chunkLength + '} ');
+
+      var arr = [];
+      var txt = utt.text
+      while (txt.length > 0) {
+            arr.push(txt.match(pattRegex)[0]);
+            txt = txt.substring(arr[arr.length - 1].length);
+        }
+        $.each(arr, function () {
+            var u = new SpeechSynthesisUtterance(this.trim());
+            u.voice = utt.voice;
+            window.speechSynthesis.speak(u);
+        });
+    };
+
     function handleTextSMMRYAsync(res) {
         if (res) {
             if (!errorcheck(res)) {
@@ -24,12 +41,16 @@ window.onload = function() { //SMMRY API abstraction
             //This defaults to chrome
             if (USE_GOOGLE_VOICE) {
                 var utterance = new SpeechSynthesisUtterance(res.sm_api_content);
-                window.speechSynthesis.speak(utterance);
+                var voices = window.speechSynthesis.getVoices();
+                utterance.voice = voices.filter(function(voice) { return voice.name == "Google US English"; })[0];
+                speechUtteranceChunker(utterance, 160, function () {
+                  //some code to execute when done
+                  console.log('Finished speaking.');
+                });
             } else {
                 //this calls uphony QQ
                 angular.element($("#angularupdate")).scope().update(res.sm_api_content);
                 angular.element($("#angularupdate")).scope().$apply();
-
             }
 
             $(window).height(10);
