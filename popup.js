@@ -24,6 +24,8 @@ window.onload = function() { //SMMRY API abstraction
             //This defaults to chrome
             if (USE_GOOGLE_VOICE) {
                 var utterance = new SpeechSynthesisUtterance(res.sm_api_content);
+                var voices = window.speechSynthesis.getVoices();
+                utterance.voice = voices.filter(function(voice) { return voice.name == "Google US English"; })[0];
                 window.speechSynthesis.speak(utterance);
             } else {
                 //this calls uphony QQ
