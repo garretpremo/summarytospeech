@@ -84,7 +84,7 @@ window.onload = function() { //SMMRY API abstraction
                 var utterance = new SpeechSynthesisUtterance(res.sm_api_content);
                 var voices = window.speechSynthesis.getVoices();
                 utterance.voice = voices.filter(function(voice) { return voice.name == "Google US English"; })[0];
-                speechUtteranceChunker(utterance, {chunkLength: 300}, function () {
+                speechUtteranceChunker(utterance, {chunkLength: 160}, function () {
                   //some code to execute when done
                   console.log('Finished speaking.');
                 });
