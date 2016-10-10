@@ -19,7 +19,7 @@ window.onload = function() { //SMMRY API abstraction
         }
         $.each(arr, function () {
             var u = new SpeechSynthesisUtterance(this.trim());
-            u.voice = utt.voice
+            u.voice = utt.voice;
             window.speechSynthesis.speak(u);
         });
     };
