@@ -1,5 +1,5 @@
 var TEXT_TOO_SHORT_ERROR = "Input text too short. Are you SURE you need to tl;dr that?";
-var USE_GOOGLE_VOICE = false;
+var USE_GOOGLE_VOICE = /chrome/i.test( navigator.userAgent );
 window.onload = function() { //SMMRY API abstraction
     //https://github.com/Dogfalo/materialize/issues/1503
     window.speechSynthesis.cancel();
