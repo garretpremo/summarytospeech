@@ -10,6 +10,7 @@ Summarization api:	[SMMRY](smmry.com/api)
 
 Text to Speech api: [euphony](euphonyinc.com)
 
+
 ##Development installation:
 - clone this repository
 - open Firefox or Chrome

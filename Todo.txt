@@ -1,0 +1,38 @@
+Clean up project
+
+	-- Encrypt Api Key or send it via request (proxy server)
+
+	-- Switch to google text to speech
+
+	-- Document code functions properly
+		-- something needs to be done about the web player
+
+	-- Clean up code in general
+
+	-- Maybe optimization...?
+
+
+SMMRY API Requests
+
+	-- Too many requests? --> proxy server
+
+
+Polishing Project
+
+	-- Make popup window resizeable
+
+	-- Make a simple web page with the exact same function as the extension
+
+
+Publishing Project
+
+	-- Use description we used for Hackathon or new description
+			-- up for debate
+
+
+	-- Paypal donation button at the bottom of the Chrome extension description
+		-- link to someone's paypal
+
+
+	-- Set version to 1.0.0
+
