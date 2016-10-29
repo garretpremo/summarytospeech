@@ -65,9 +65,7 @@ window.onload = function() { //SMMRY API abstraction
     // Get summarized text
     function getTextSMMRY(text, lines) {
         // Set up API constants
-        SM_API_URL = "http://api.smmry.com/";
-        SM_API_KEY = "0C05A0A3E9"; // Mandatory, N represents your registered API key.
-        // SM_URL = X // Mandatory, X represents the webpage to summarize.
+        SM_API_URL = "https://guarded-forest-33799.herokuapp.com/?";
         SM_LENGTH = lines; // Optional, N represents the number of sentences returned, default is 7
         // SM_KEYWORD_COUNT = N // Optional, N represents how many of the top keywords to return
         // SM_QUOTE_AVOID     // Optional, summary will not include quotations
@@ -76,8 +74,7 @@ window.onload = function() { //SMMRY API abstraction
         //make formatted API request
         var result;
         return Promise.resolve($.ajax({
-            url: SM_API_URL + "&SM_API_KEY=" + SM_API_KEY +
-                "&SM_LENGTH=" + SM_LENGTH,
+            url: SM_API_URL + "&SM_LENGTH=" + SM_LENGTH,
             type: "POST",
             data: { sm_api_input: text },
             dataType: "json",
