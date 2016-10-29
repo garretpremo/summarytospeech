@@ -44,8 +44,7 @@ window.onload = function() { //SMMRY API abstraction
                 var voices = window.speechSynthesis.getVoices();
                 utterance.voice = voices.filter(function(voice) { return voice.name == "Google US English"; })[0];
                 speechUtteranceChunker(utterance, 160, function () {
-                  //some code to execute when done
-                  console.log('Finished speaking.');
+                    //some code to execute when done
                 });
             } else {
                 //this calls uphony QQ
@@ -53,20 +52,19 @@ window.onload = function() { //SMMRY API abstraction
                 angular.element($("#angularupdate")).scope().$apply();
             }
 
+            // quick fix for resizing the popup after the text is summarized
             $(window).height(10);
-            // var diff = $('textarea#textarea1').val.length() - lbefore;
             window.scrollTo(0, 0);
 
             return res.sm_api_content;
-            // result = res;
-            // return res["sm_api_title"];
+
         }
-        // console.log(res.responseText)
-        // result = res;
     }
 
+
+    // Get summarized text
     function getTextSMMRY(text, lines) {
-        //Set up API constants
+        // Set up API constants
         SM_API_URL = "http://api.smmry.com/";
         SM_API_KEY = "0C05A0A3E9"; // Mandatory, N represents your registered API key.
         // SM_URL = X // Mandatory, X represents the webpage to summarize.
@@ -91,21 +89,17 @@ window.onload = function() { //SMMRY API abstraction
     }
 
 
-
-
-    //clean up good result and just spit out the text.
-    // return result.sm_api_content
-    // console.log("We got this:" + result);
-    //return resulting API text
+    // clean up good result and just spit out the text
+    // return resulting API text
     $("#submitbtn1").click(function() {
-        // $(body).css("background-color", "blue");
         //get the text from the text area
         var text = $('textarea#textarea1').val();
 
-        // //call smmry
-        //reutrns a promise
+        // call smmry
+        // returns a promise
+
+        // exit function if less than 40 characters are entered
         if (text.length < 40) {
-            console.log(TEXT_TOO_SHORT_ERROR);
             $('textarea#textarea1').val(TEXT_TOO_SHORT_ERROR);
             $('textarea#textarea1').select();
             return;
@@ -113,14 +107,11 @@ window.onload = function() { //SMMRY API abstraction
         $("#submitbtn1").fadeOut(800);
         $("#loader").fadeIn(800);
         verbocity = $("#selverbocity").val();
-        console.log("Verbocity is: " + verbocity);
+
         getTextSMMRY(text, verbocity);
 
-        // console.log(text)
-        // alert(summary);
-        // while(1);
     });
-    //alert("opened page");
+
     $(document).ready(function() {
         $('select').material_select();
     });
@@ -137,13 +128,12 @@ window.onload = function() { //SMMRY API abstraction
 
     //recieve text from context menu click
     function setSelectionText(info) {
-        console.log(info);
+
         //update text area
         $('textarea#textarea1').val(info);
         $('textarea#textarea1').trigger('autoresize');
         $('label[for="textarea1"]').attr('class', 'active');
-        //call smmry
-        //var summary = getTextSMMRY(info);
+        
     }
 
     //sent message to backgroundjs asking for selectionText
