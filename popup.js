@@ -65,7 +65,7 @@ window.onload = function() { //SMMRY API abstraction
     // Get summarized text
     function getTextSMMRY(text, lines) {
         // Set up API constants
-        SM_API_URL = "https://guarded-forest-33799.herokuapp.com/?";
+        SM_API_URL = "https://summarytospeechproxyserver.herokuapp.com/?";
         SM_LENGTH = lines; // Optional, N represents the number of sentences returned, default is 7
         // SM_KEYWORD_COUNT = N // Optional, N represents how many of the top keywords to return
         // SM_QUOTE_AVOID     // Optional, summary will not include quotations
